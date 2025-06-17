@@ -1,0 +1,33 @@
+# cfg/video_training.yaml
+model:
+  name: XCLIP_DeMamba
+  tuning_mode: sft
+  task: many2many
+
+# optimizer + scheduler settings
+optimizer:
+  type: AdamW
+  lr: 0.000001
+  weight_decay: 1e-8
+
+scheduler:
+  type: MultiStepLR
+  milestones: [20, 25]
+  gamma: 0.1
+
+# where to dump checkpoints & logs
+save_dir: ./results/XCLIP_Mamba_2
+
+# training schedule
+max_epoch: 30
+batches_per_epoch: 4000   # typo fixed from “bath_per_epoch”
+
+# --- new “dataloader” section for mp4 videos ---
+dataloader:
+  train_dir: /full/path/to/GenVideo-train
+  val_dir:   /full/path/to/GenVideo-val   # if you have a split
+  input_size: [224, 224]
+  train_batch_size: 128
+  val_batch_size: 64
+  num_workers: 8
+  frame_sampling: first   # or “random” if you’d like to sample a random frame
