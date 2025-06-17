@@ -1,0 +1,8 @@
+[
+    {
+        "real_path": "data_vid/test_sample/real",
+        "fake_path": "data_vid/test_sample/fake",
+        "data_mode": "ours",
+        "key": "test_sample"
+    }
+]

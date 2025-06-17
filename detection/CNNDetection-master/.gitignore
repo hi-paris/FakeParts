@@ -1,0 +1,14 @@
+#weights
+weights/
+
+#Result files
+results/
+result_test/
+
+#data 
+dataset/    
+
+#Debug files
+notebook/debug
+logs/
+scripts/

@@ -1,0 +1,8 @@
+[
+    {
+        "real_path": "examples/realfakedir3/0_real",
+        "fake_path": "examples/realfakedir3/1_fake",
+        "data_mode": "ours",
+        "key": "test_sample"
+    }
+]

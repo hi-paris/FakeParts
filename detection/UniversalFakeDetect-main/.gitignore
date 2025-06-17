@@ -1,0 +1,12 @@
+#Result files
+result/
+result_test/
+
+#Data files
+datasets/
+diffusion_datasets/
+
+#Debug files
+notebook/debug
+logs/
+scripts/

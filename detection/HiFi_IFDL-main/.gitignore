@@ -1,0 +1,18 @@
+#Result files
+results/
+viz_eval/
+viz_eval_2/
+
+#Data files
+data/
+data_dir/
+data_vid/*
+!data_vid/test_sample
+
+#Model files
+weights/
+
+#Debug files
+notebook/debug
+logs/
+scripts/
