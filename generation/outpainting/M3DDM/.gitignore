@@ -1,0 +1,26 @@
+**/.ipynb_checkpoints/
+**/.vscode/
+**/__pycache__/
+**/.DS_Store/
+
+#Ignore folder
+models/M3DDM_model/** 
+models/M3DDM_model/.gitkeep
+
+models/SD_model/**
+models/SD_model/.gitkeep
+
+data/**
+!data/.gitkeep
+
+result/**
+!result/.gitkeep
+
+#ignore file type
+*.ipynb
+
+#igone specific file
+erreur.txt
+
+#igore checkpoint
+models_checkpoints/

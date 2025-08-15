@@ -1,0 +1,61 @@
+SB_Dog1:
+
+  train_data:
+    video_path: "data/outpaint_videos/SB_Dog1.mp4"
+    prompt: "a cute dog, garden, flowers"
+    n_sample_frames: 16
+    width: 256
+    height: 256
+    sample_start_idx: 0
+    sample_frame_rate: 1
+  
+  validation_data:
+    prompts:
+      - "a cute dog, garden, flowers"
+    prompts_l:
+      - "wall"
+    prompts_r:
+      - "wall"
+    prompts_t:
+      - ""
+    prompts_b:
+      - ""
+
+    prompts_neg:
+      - ""
+
+
+    is_grid: False
+    video_length: 16
+    width: 256
+    height: 256
+
+    scale_l: 0
+    scale_r: 0
+    scale_t: 0.5
+    scale_b: 0.5
+
+    window_size: 16 
+    stride: 4
+
+
+    repeat_time: 0 # set to 4 enable noise regret
+    jump_length: 3
+
+    num_inference_steps: 50
+    guidance_scale: 7.5
+
+
+    bwd_mask: null
+    fwd_mask: null
+    bwd_flow: null
+    fwd_flow: null
+
+    warp_step: [0,0.5]
+    warp_time: 3
+
+  mask_config:
+    mask_l: [0., 0.4]
+    mask_r: [0., 0.4]
+    mask_t: [0., 0.4]
+    mask_b: [0., 0.4]
