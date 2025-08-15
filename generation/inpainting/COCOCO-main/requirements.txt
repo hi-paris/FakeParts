@@ -1,0 +1,19 @@
+#To avoid any issues with the versions of the libraries, we recommend to fisrt intall torch and then the rest of the libraries
+torch==2.4.1
+torchvision
+torchaudio
+diffusers==0.11.1
+transformers==4.25.1
+imageio==2.34.0
+decord==0.6.0
+gdown
+gradio==3.40
+xformers==0.0.28
+imageio-ffmpeg==0.4.9
+decord==0.6.0
+omegaconf==2.3.0
+safetensors
+einops
+wandb
+
+#huggingface_hub has issues with cached_download since 0.26, so we need to install 0.26
