@@ -1,0 +1,18 @@
+name: fatformer
+channels:
+  - defaults
+  - conda-forge
+  - pytorch
+dependencies:
+  - python=3.7.10
+  - cudatoolkit=11.0
+  - pytorch=1.7.1
+  - torchvision=0.8.2
+  - pywavelets           # installs PyWavelets via conda
+  - ftfy                 # installs ftfy via conda
+  - pip
+  - pip:
+      - tqdm
+      - setuptools
+      - scikit-learn
+      - regex
