@@ -28,7 +28,7 @@
 
 ---
 
-## Contents
+## Contents 📕
 
 * [News](#news)
 * [Dataset](#dataset)
@@ -47,7 +47,7 @@
 
 ---
 
-## News
+## News ✨
 
 * **2025-** Dataset and benchmark released (including closed- and open-source generations).
 * **2025-** Baseline evaluation code (image- and video-level detectors).
@@ -85,38 +85,41 @@ Hi! PARIS / Institut Polytechnique de Paris / LIX  / ENSTA Paris
 
 ---
 
-## Repo Structure 
+## Repo Structure 🌳
 
 ```
-fakeparts/
-├─ README.md
-├─ env/                       # environment files (conda, pip)
-├─ fakepartsbench/            # dataset helpers
-│  ├─ download.py             # mirrors + integrity check
-│  ├─ index.json              # split definitions
-│  ├─ io.py                   # lazy video/mask loading
-│  └─ viz.py                  # mask overlay, thumbnails
-├─ eval/                      # evaluation protocols
-│  ├─ image_level/            # CNNDetection, UFD adapters
-│  ├─ video_level/            # DeMamba, AIGVDet adapters
-│  ├─ metrics/                # F1, mAP, ROC, FVD (optional)
-│  └─ run_eval.py
-├─ baselines/                 # minimal wrappers + configs
-│  ├─ cnndetection/
-│  ├─ universal_fake_detector/
-│  ├─ demamba/
-│  └─ aigvdet/
-├─ human_study/               # survey scripts (Streamlit)
-└─ assets/
-   ├─ final_teaser.png
-   └─ pipeline_xi.jpg
+FakeParts/
+├─ annotation/                # human study annotation tools
+│  ├─ app.py                  # Streamlit survey app
+│  ├─ preprocessing_remove_au.py
+│  └─ requirements.txt        # annotation dependencies
+├─ assets/                    # figures for README/paper
+│  ├─ final_teaser.png
+│  └─ pipeline.jpg
+├─ detection/                 # baseline detectors
+│  ├─ AIGVDet/
+│  ├─ C2P-CLIP/
+│  ├─ CNNDetection-master/
+│  ├─ DeMamba/
+│  ├─ FatFormer/
+│  ├─ HiFi_IFDL-main/
+│  ├─ NPR/
+│  └─ UniversalFakeDetect-*/
+├─ generation/                # FakeParts generators
+│  ├─ Faceswap/
+│  ├─ Inpainting/
+│  ├─ Interpolation/
+│  ├─ Outpainting/
+│  ├─ Stylechange/
+│  └─ T2V/
+
 ```
 
 > Tip: Place your images in `assets/` (the README references `assets/final_teaser.png` and `assets/pipeline_xi.jpg`).
 
 ---
 
-## Installation
+## Installation 📦
 
 ```bash
 # (A) Conda (recommended)
@@ -148,11 +151,8 @@ print(dataset)
 ```
 
 
-```
 
----
-
-## Evaluation Protocol
+## Evaluation Protocol 💯
 
 We report:
 
@@ -163,38 +163,34 @@ We report:
 **Default metrics:** Accuracy, F1, mAP (per category + macro avg).
 **Recommended splits:** use `index.json` or our CSVs to reproduce the paper.
 
-Run evaluation:
 
-```bash
-python eval/run_eval.py \
-  --root /path/to/FakePartsBench \
-  --config eval/configs/default.yaml \
-  --save out/eval_default.json
-```
 
 ---
 
-## Reproducing Baselines
+## Reproducing Baselines 📊
 
-We include light wrappers that follow the authors’ official implementations.
+We provide wrappers and configs to reproduce a wide range of **image-level** and **video-level** detectors.
+Each baseline follows the authors’ official implementation as closely as possible.
 
-### Image-level
+### Image-level 🖼️
 
-* **CNNDetection** (Wang et al. CVPR’20)
-* **UniversalFakeDetector** (Ojha et al. CVPR’23 w/ CLIP)
+* **CNNDetection** (Wang et al., CVPR’20) – CNN-based universal fake image detector trained on diverse forgeries.
+* **UniversalFakeDetector (UFD)** (Ojha et al., CVPR’23) – CLIP-based zero-shot detector, effective across manipulation types.
+* **FatFormer** (Zhao et al., ICCV’23) – multi-scale attention transformer tuned for subtle manipulations.
+* **C2P-CLIP** (Xu et al., arXiv’24) – contrastive fine-tuning of CLIP for part-level detection.
+* **NPR** (Zhang et al., NeurIPS’24) – noise-pattern representation learning to capture subtle editing traces.
+* **HiFi-IFDL** (Li et al., arXiv’24) – high-fidelity feature disentanglement for manipulation detection.
+
+### Video-level 🎥
+
+* **AIGVDet** (Bai et al., PRCV’24) – multi-branch detector combining spatial cues and optical flow.
+* **DeMamba** (Chen et al., arXiv’24) – state-space model for long-range temporal forgery localization.
 
 
-### Video-level
-
-* **AIGVDet** (Bai et al. PRCV’24) – spatial + optical flow branches
-* **DeMamba** (Chen et al. arXiv’24) – state-space temporal modeling
 
 
-> Check the `baselines/*/README.md` for any extra model weights and licensing notes.
 
----
-
-## Human Study
+## Human Study 👨🏼‍🏫
 
 We release a **Streamlit**-based survey used in the paper.
 
@@ -208,7 +204,7 @@ Participants label **real vs. fake** and provide short rationales per clip.
 
 ---
 
-## Results Snapshot
+## Results Snapshot 🎯
 
 Average “fake” confidence by detectors vs. humans (higher = better fake detection):
 
@@ -230,9 +226,9 @@ Average “fake” confidence by detectors vs. humans (higher = better fake dete
 
 ---
 
-## Citations
+## Citations ✍️
 
-If you use **FakeParts** or **FakePartsBench**, please cite:
+If you use **FakeParts** please cite:
 
 ```bibtex
 @article{brison2025fakeparts,
@@ -244,22 +240,9 @@ If you use **FakeParts** or **FakePartsBench**, please cite:
 }
 ```
 
-And cite **FakePartsBench** when evaluating:
 
-```bibtex
-@dataset{fakepartsbench2025,
-  title        = {FakePartsBench},
-  author       = {Brison, Ga{\"e}tan and Daiboo, Soobash and A{\"i}meur, Samy and
-                  Sani, Awais Hussain and Wang, Xi and Franchi, Gianni and Kalogeiton, Vicky},
-  year         = {2025},
-  howpublished = {\url{https://huggingface.co/datasets/gaetanbrison/FakeParts}},
-  note         = {Mirror: \url{https://huggingface.co/datasets/hi-paris/FakeParts}}
-}
-```
 
----
-
-## License & Responsible Use
+## License & Responsible Use 🔨
 
 * **Code:** see `LICENSE` (default: BSD-3-Clause unless noted otherwise in subfolders).
 * **Dataset:** released for **research and defensive purposes only**.
@@ -271,7 +254,7 @@ And cite **FakePartsBench** when evaluating:
 
 ---
 
-## Acknowledgements
+## Acknowledgements 💡
 
 This work was conducted at **Hi! PARIS**, **Institut Polytechnique de Paris**, **LIX (École Polytechnique)**, and **U2IS (ENSTA Paris)**. We thank the authors and teams behind Sora, Veo2, Allegro, Framer, RAVE, InsightFace, DiffuEraser, ProPainter, AKiRa, as well as the maintainers of DAVIS, YouTube-VOS, MOSE, LVD-2M, and Animal Kingdom.
 
@@ -279,7 +262,7 @@ A special thanks to the DeepMind team working on Veo2 and Veo3 for granting us e
 
 ---
 
-## Contact
+## Contact 📧
 
 Questions, issues, or pull requests are welcome!
 
