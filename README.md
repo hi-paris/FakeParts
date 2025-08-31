@@ -231,12 +231,13 @@ Average “fake” confidence by detectors vs. humans (higher = better fake dete
 If you use **FakeParts** please cite:
 
 ```bibtex
-@article{brison2025fakeparts,
-  title   = {FakeParts: a New Family of AI-Generated DeepFakes},
-  author  = {Ga{\"e}tan Brison and Soobash Daiboo and Samy A{\"i}meur and
-             Awais Hussain Sani and Xi Wang and Gianni Franchi and Vicky Kalogeiton},
-  journal = {arXiv preprint},
-  year    = {2025}
+@misc{brison2025fakeparts,
+    title={FakeParts: a New Family of AI-Generated DeepFakes},
+    author={Gaetan Brison and Soobash Daiboo and Samy Aimeur and Awais Hussain Sani and Xi Wang and Gianni Franchi and Vicky Kalogeiton},
+    year={2025},
+    eprint={2508.21052},
+    archivePrefix={arXiv},
+    primaryClass={cs.CV}
 }
 ```
 
