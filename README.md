@@ -2,12 +2,14 @@
 ![Python Version](https://img.shields.io/badge/python-%3E%3D3.10-blue)
 [![Code Style: Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
-[![Hugging Face Dataset](https://img.shields.io/badge/Hugging%20Face-Space-yellow)](https://huggingface.co/datasets/hi-paris/FakeParts)
-[![arXiv](https://img.shields.io/badge/arXiv-2508.21052-red.svg)](https://arxiv.org/abs/2508.21052)
+[![Hugging Face Dataset Sample](https://img.shields.io/badge/Hugging%20Face-Space-yellow)](https://huggingface.co/datasets/lavNeurIPS/FakePartsSample)
+
+[//]: # ([![arXiv]&#40;https://img.shields.io/badge/arXiv-2508.21052-red.svg&#41;]&#40;https://arxiv.org/abs/2508.21052&#41;)
+
 # FakeParts: A New Family of AI-Generated Video Forgeries
 
-> **FakeParts** are *partial* deepfakes—localized spatial or temporal edits that blend into otherwise real videos.
-> **FakePartsBench** is the first benchmark purpose-built to evaluate them.
+> **FakeParts** are partial AI video forgeries: localised spatial, temporal, or style manipulations that are blended into otherwise authentic videos.
+> **FakePartsBench** is a large-scale benchmark for evaluating detectors under both full-video forgeries and partial manipulations.
 
 <p align="center">
   <img src="assets/final_teaser.png" width="95%" alt="FakePartsBench teaser">
@@ -21,11 +23,12 @@
 
 ## Summary
 
-* **Problem.** Most detectors and datasets focus on *fully synthetic* videos. Subtle, localized edits (FakeParts) are under-explored yet highly deceptive.
-* **Solution.** We define *FakeParts* and release **FakePartsBench**: 25K+ videos with **pixel-level** and **frame-level** annotations covering **full deepfakes** (T2V/I2V/TI2V) and **partial manipulations** (faceswap, inpainting, outpainting, style change, interpolation).
-* **Finding.** Humans and SOTA detectors miss many FakeParts; detection accuracy drops by **30–40%** versus fully synthetic content.
-* **Use.** Train and evaluate detectors that localize *where* and *when* manipulations happen.
-
+* **Problem.** Most existing detectors and datasets focus on fully generated videos or face-centric forgeries. Subtle, localised edits to otherwise authentic videos remain under-explored, yet are highly deceptive.
+* **Solution.** We define **FakeParts** and release **FakePartsBench**, a large-scale benchmark with pixel-level and frame-level annotations covering both full-video forgeries and partial manipulations.
+* **Coverage.** FakePartsBench includes full-video generation categories such as T2V and IT2V, as well as partial manipulation categories including FaceSwap, Inpainting, Outpainting, Style, Interpolation, and Extrapolation.
+* **Finding.** Humans and state-of-the-art detectors often fail to detect FakeParts, revealing a critical gap in current AI-forgery detection systems.
+* **Use.** Train and evaluate detectors that identify not only whether a video is forged, but also where and when the manipulation occurs.
+* 
 ---
 
 ## Contents 📕
@@ -62,11 +65,10 @@
 * High-res content (up to 1080p), durations typically **5–14 s**
 * **Annotations:** frame masks (spatial), manipulated frames (temporal)
 * **Categories:**
-
-  * **Full deepfakes:** T2V / I2V / TI2V (Sora, Veo2, Allegro AI)
-  * **Spatial FakeParts:** Faceswap (InsightFace), Inpainting (DiffuEraser, ProPainter), Outpainting (AKiRa)
-  * **Temporal FakeParts:** Interpolation (Framer)
-  * **Style FakeParts:** Style change (RAVE)
+  * **Full-video forgeries:** T2V and IT2V
+  * **Spatial FakeParts:** FaceSwap, Inpainting, Outpainting
+  * **Temporal FakeParts:** Interpolation, Extrapolation
+  * **Style FakeParts:** Style
 
 **Download (mirrors):**
 
@@ -78,8 +80,9 @@
 
 ## Paper 📝
 
-**FakeParts: a New Family of AI-Generated DeepFakes**
-Gaëtan Brison, Soobash Daiboo, Samy Aïmeur, Awais Hussain Sani, Xi Wang, Gianni Franchi, Vicky Kalogeiton
+**FakeParts: A New Family of AI-Generated Video Forgeries**  
+*Preprint, under review.*
+Ziyi LIU, Firas Gabetni, Awais Hussain SANI, Xi WANG, Soobash Daiboo, Gaëtan Brison, Gianni Franchi, Vicky Kalogeiton
 Hi! PARIS / Institut Polytechnique de Paris / LIX  / ENSTA Paris
 *Preprint, under review.*
 
@@ -114,8 +117,6 @@ FakeParts/
 │  └─ T2V/
 
 ```
-
-> Tip: Place your images in `assets/` (the README references `assets/final_teaser.png` and `assets/pipeline_xi.jpg`).
 
 ---
 
@@ -232,8 +233,7 @@ If you use **FakeParts** please cite:
 
 ```bibtex
 @misc{brison2025fakeparts,
-    title={FakeParts: a New Family of AI-Generated DeepFakes},
-    author={Gaetan Brison and Soobash Daiboo and Samy Aimeur and Awais Hussain Sani and Xi Wang and Gianni Franchi and Vicky Kalogeiton},
+  title={FakeParts: A New Family of AI-Generated Video Forgeries},author={Gaetan Brison and Soobash Daiboo and Samy Aimeur and Awais Hussain Sani and Xi Wang and Gianni Franchi and Vicky Kalogeiton},
     year={2025},
     eprint={2508.21052},
     archivePrefix={arXiv},
@@ -267,6 +267,6 @@ A special thanks to the DeepMind team working on Veo2 and Veo3 for granting us e
 
 Questions, issues, or pull requests are welcome!
 
-* Gaëtan Brison — *maintainer*
+* Ziyi LIU, Gaëtan Brison — *maintainer*
 * Soobash Daiboo, Samy Aïmeur, Awais Hussain Sani
 * Xi Wang, Gianni Franchi, Vicky Kalogeiton
