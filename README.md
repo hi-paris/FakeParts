@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 [![Hugging Face Dataset](https://img.shields.io/badge/Hugging%20Face-Space-yellow)](https://huggingface.co/datasets/hi-paris/FakeParts)
 [![arXiv](https://img.shields.io/badge/arXiv-2508.21052-red.svg)](https://arxiv.org/abs/2508.21052)
-# FakeParts: A New Family of AI-Generated DeepFakes
+# FakeParts: A New Family of AI-Generated Video Forgeries
 
 > **FakeParts** are *partial* deepfakes—localized spatial or temporal edits that blend into otherwise real videos.
 > **FakePartsBench** is the first benchmark purpose-built to evaluate them.
