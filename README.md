@@ -16,7 +16,7 @@
 </p>
 
 <p align="center">
-  <img src="assets/pipeline.jpg" width="95%" alt="Pipeline overview">
+  <img src="assets/pipeline.png" width="95%" alt="Pipeline overview">
 </p>
 
 ---
