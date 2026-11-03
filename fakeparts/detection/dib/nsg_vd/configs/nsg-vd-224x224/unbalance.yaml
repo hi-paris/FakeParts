@@ -1,0 +1,59 @@
+defaults:
+  - _self_
+
+hydra:
+  run:
+    dir: "results/outputs/" 
+
+model:
+  name: "Velocity_Single_TALL_MMD"
+  img_size: 224
+  epsilon: 10
+  sigma: 1000
+  sigma0: 0.1
+  feature_dim: 300
+  is_smooth: True
+  is_yy_zero: True # True for mmd-mp, False for mmd-d
+  
+seed: 42
+trainer:
+  max_epochs: 200
+  optimizer:
+    name: "adam"
+    lr: 1e-4
+    betas: [0.9,0.999]
+    weight_decay: 0.1
+  loss_fn:
+    name: "cross_entropy"
+  val_check_interval: 1
+  num_gpus: 1
+  device_ids: [0,1,2,3]
+
+data:
+  data_path: "../Data/${data.dataset_name}"
+  dataset_name: "GenVideo"
+  feature_type: velocity
+  num_workers: 16
+  num_frames: 8
+  generation_model: "Pika"
+  input_shape: [224,224]
+  resolution_size: 224
+  train_real_model: "Kinetics-400"
+  test_real_model: "MSR-VTT"
+  val_real_model: "MSR-VTT"
+  ref_model: "MSR-VTT"
+  ref_mode: "test"
+  filter_nsg: False
+  diffuse_steps: 5
+  train_load_len: 10000
+  ref_load_len: 200
+  val_load_len: 100
+  batch_size: 24
+  val_batch_size: 24
+  pn_ratio: 0.1 # positive(AI-generated) / negative(real) ratio for unbalance task
+
+task_type: unbalance # standard / unbalance
+debug: False
+experiment_name: "standard-Pika-mmd-mp"
+save_ckpt_path: "./results/ckpts/nsg-vd/${experiment_name}/"
+log_path: "./results/logs/nsg-vd"

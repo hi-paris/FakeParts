@@ -1,0 +1,6 @@
+[submodule "fakeparts/evaluation/VBench"]
+	path = fakeparts/evaluation/VBench
+	url = https://github.com/Vchitect/VBench.git
+[submodule "fakeparts/evaluation/content-debiased-fvd"]
+	path = fakeparts/evaluation/content-debiased-fvd
+	url = https://github.com/songweige/content-debiased-fvd.git

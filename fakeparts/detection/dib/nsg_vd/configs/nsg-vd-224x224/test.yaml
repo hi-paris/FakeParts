@@ -1,0 +1,49 @@
+defaults:
+  - _self_
+
+hydra:
+  run:
+    dir: "results/outputs/" 
+
+model:
+  name: "Velocity_Single_TALL_MMD"
+  img_size: 224
+  epsilon: 10
+  sigma: 1000
+  sigma0: 0.1
+  feature_dim: 300
+  is_yy_zero: True
+  is_smooth: True
+
+trainer:
+  num_gpus: 1
+  device_ids: [0,1,2,3]
+
+seed: 42
+
+data:
+  feature_type: velocity
+  dataset_name: "GenVideo"
+  num_workers: 16
+  data_path: "../Data/${data.dataset_name}"
+  num_frames: 8
+  input_shape: [224,224]
+  resolution_size: 224
+  test_real_model: "MSR-VTT"
+  val_real_model: "MSR-VTT"
+  ref_model: "MSR-VTT"
+  ref_mode: "val"
+  diffuse_steps: 5
+  ref_load_len: 100
+  test_load_len: 500
+  batch_size: 24
+  val_batch_size: 24
+
+regression: False
+exp_name: "default"
+
+# test:
+ckpt_path: "/U_20240905_ZSH_SMIL/lzh/NSG-VD/results/logs/filter_nsg_Pika/lr_0.0001_sigma_1000_sigma0_0.1/2025-07-01/07-08/best_ckpt.pth"
+experiment_name: "standard-Pika-d"
+save_csv_file: "test_results.csv"
+log_path: "./results/test/${exp_name}"

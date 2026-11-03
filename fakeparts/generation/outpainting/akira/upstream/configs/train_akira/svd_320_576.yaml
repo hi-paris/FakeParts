@@ -1,0 +1,135 @@
+output_dir: "output/"
+pretrained_model_path: "/svd/stable-video-diffusion-img2vid"
+unet_subfolder: "unet"
+down_block_types: ['CrossAttnDownBlockSpatioTemporalPoseCond', 'CrossAttnDownBlockSpatioTemporalPoseCond', 'CrossAttnDownBlockSpatioTemporalPoseCond', 'DownBlockSpatioTemporal']
+up_block_types: ['UpBlockSpatioTemporal', 'CrossAttnUpBlockSpatioTemporalPoseCond', 'CrossAttnUpBlockSpatioTemporalPoseCond', 'CrossAttnUpBlockSpatioTemporalPoseCond']
+
+train_data:
+  root_path:       "real-state-10k"
+  annotation_json:       "annotations/train.json"
+  sample_stride: 8
+  sample_n_frames: 14
+  relative_pose: true
+  zero_t_first_frame: true
+  sample_size: [320, 576]
+  rescale_fxy: true
+  shuffle_frames: false
+  use_flip: false
+
+  # Augmentation focal length
+  rand_focal_length: true
+  rand_fl_lbound: 1
+  rand_fl_ubound: 3.
+  rand_focal_length_speed: 0.3
+
+  # Augmentation camera distortion
+  rand_dist: true
+  rand_dist_bound: 0.1
+  rand_dist_speed: 0.1
+
+  # Augmentation bokeh
+  rand_bokeh: true # false
+  rand_bokeh_fp_bound: 0.7
+  rand_bokeh_fp_speed: 0.01 # 0.01 - 0.05/0.1 
+  rand_bokeh_K_bound: 100 # can be 70 - 150
+  rand_bokeh_K_speed: 4 # 2 - 6
+
+  aug_dropout: 0.2
+
+  plucker_type: "cctrl" # cctrl, decoupled
+  depth_folder: "depth_clips"
+  bokeh_reprez: "sigmoidb"
+
+validation_data:
+  root_path:       "real-state-10k"
+  annotation_json:       "annotations/validation.json"
+  sample_stride: 8
+  sample_n_frames: 14
+  relative_pose: true
+  zero_t_first_frame: true
+  sample_size: [320, 576]
+  rescale_fxy: true
+  shuffle_frames: false
+  use_flip: false
+  return_clip_name: true
+
+  # Augmentation focal length
+  rand_focal_length: true
+  rand_fl_lbound: 1
+  rand_fl_ubound: 3.
+  rand_focal_length_speed: 0.3
+
+  # Augmentation camera distortion
+  rand_dist: true
+  rand_dist_bound: 0.1
+  rand_dist_speed: 0.1
+
+  # Augmentation bokeh
+  rand_bokeh: true # false
+  rand_bokeh_fp_bound: 0.7
+  rand_bokeh_fp_speed: 0.01 # 0.01 - 0.05/0.1 
+  rand_bokeh_K_bound: 100 # can be 70 - 150
+  rand_bokeh_K_speed: 4 # 2 - 6
+
+  aug_dropout: 0.
+
+  plucker_type: "cctrl" # cctrl, decoupled
+  depth_folder: "depth_clips"
+  bokeh_reprez: "sigmoidb"
+
+random_null_image_ratio: 0.15
+
+pose_encoder_kwargs:
+  downscale_factor: 8
+  channels: [320, 640, 1280, 1280]
+  nums_rb: 2
+  cin: 576 # 384, 576
+  ksize: 1
+  sk: true
+  use_conv: false
+  compression_factor: 1
+  temporal_attention_nhead: 8
+  attention_block_types: ["Temporal_Self", ]
+  temporal_position_encoding: true
+  temporal_position_encoding_max_len: 14
+
+attention_processor_kwargs:
+  add_spatial: false
+  add_temporal: true
+  attn_processor_name: 'attn1'
+  pose_feature_dimensions: [320, 640, 1280, 1280]
+  query_condition: true
+  key_value_condition: true
+  scale: 1.0
+
+do_sanity_check: true
+sample_before_training: false
+
+max_train_epoch:      -1
+max_train_steps:      50000
+validation_steps:       1000
+validation_steps_tuple: [500, ]
+
+learning_rate:    3.e-5
+
+P_mean: 0.7
+P_std: 1.6
+condition_image_noise_mean: -3.0
+condition_image_noise_std: 0.5
+sample_latent: true
+first_image_cond: true
+
+num_inference_steps: 25
+min_guidance_scale: 1.0
+max_guidance_scale: 3.0
+
+num_workers: 0
+train_batch_size: 1
+checkpointing_epochs: -1
+checkpointing_steps:  1000
+
+mixed_precision_training: false
+enable_xformers_memory_efficient_attention: true
+
+global_seed: 42
+logger_interval: 10

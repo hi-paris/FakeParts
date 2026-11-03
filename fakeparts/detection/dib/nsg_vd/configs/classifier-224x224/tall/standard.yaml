@@ -1,0 +1,46 @@
+defaults:
+  - _self_
+
+hydra:
+  run:
+    dir: "results/outputs/" 
+
+model:
+  name: "TALL"
+
+seed: 42
+trainer:
+  max_epochs: 10
+  optimizer:
+    name: "adamW"
+    lr: 1e-6 # TALL is 1e-6
+    betas: [0.9,0.999]
+    weight_decay: 0.1
+  loss_fn:
+    name: "binary_cross_entropy"
+  val_check_interval: 2
+  num_gpus: 1
+  device_ids: [0,1,2,3]
+
+data:
+  batch_size: 24 # batch size is 24
+  val_batch_size: 8
+  feature_type: image
+  dataset_name: "GenVideo"
+  num_workers: 16
+  data_path: "../Data/${data.dataset_name}"
+  num_frames: 8
+  generation_model: "Pika" 
+  input_shape: [224,224]
+  train_real_model: "Kinetics-400"
+  test_real_model: "MSR-VTT"
+  val_real_model: "MSR-VTT"
+  train_load_len: 10000
+  val_load_len: 100
+  diffuse_steps: 5
+
+task_type: standard # standard / unbalance
+debug: False
+experiment_name: "standard-Pika-tall"
+save_ckpt_path: "./results/ckpts/baselines/${experiment_name}/"
+log_path: "./results/logs/baselines/"

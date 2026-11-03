@@ -1,0 +1,13 @@
+diffusers==0.29.0
+moviepy==1.0.1
+transformers==4.44.2
+accelerate
+omegaconf
+opencv-python-headless==4.10.0.84
+onnxruntime-gpu==1.18.0
+numpy<2
+decord
+scikit-image
+scikit-video
+einops
+tqdm

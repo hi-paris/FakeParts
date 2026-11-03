@@ -1,0 +1,23 @@
+hydra-core 
+omegaconf
+tensorboard
+torchinfo
+git+https://github.com/openai/CLIP.git
+loguru
+scikit-learn
+matplotlib
+moviepy
+opencv-python
+torchsde
+torchdiffeq
+scipy
+seaborn
+timm
+transformers
+pscan
+einops
+tabulate
+# fix multi-GPU training
+# torch==2.4.0+cu117
+# torchvision==0.15.1+cu117
+# torchaudio==2.4.1+cu117

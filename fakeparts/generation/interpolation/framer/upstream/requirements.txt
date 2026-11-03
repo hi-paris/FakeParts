@@ -1,0 +1,12 @@
+torch==1.13.1+cu116
+torchvision==0.14.1+cu116
+diffusers==0.24.0
+transformers==4.27.0
+xformers==0.0.16
+imageio==2.27.0
+decord==0.6.0
+einops 
+triton==2.1.0
+opencv-python
+av
+accelerate==0.27.2

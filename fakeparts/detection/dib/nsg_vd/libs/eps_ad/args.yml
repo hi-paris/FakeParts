@@ -1,0 +1,69 @@
+# General settings
+config: "./libs/eps_ad/imagenet.yml"
+data_seed: 0
+seed: 1235
+exp: "./exp_results"
+verbose: "info"
+image_folder: "imagnet"
+ni: false
+sample_step: 1
+t: 1000
+t_delta: 15
+rand_t: false
+diffusion_type: "sde"
+score_type: "score_sde"
+eot_iter: 20
+use_bm: false
+datapath: "./dataset"
+
+# Detection settings
+clean_score_flag: true
+detection_datapath: "./score_diffusion_t_imagenet_1w"
+detection_ensattack_norm_flag: false
+generate_1w_flag: true
+single_vector_norm_flag: true
+t_size: 10
+diffuse_t: 50
+perb_image: false
+
+# LDSDE settings
+sigma2: 0.001
+lambda_ld: 0.01
+eta: 5.0
+step_size: 0.01
+
+# Adversarial settings
+domain: "imagenet"
+classifier_name: "imagenet-resnet50"
+partition: "val"
+adv_batch_size: 32
+attack_type: "square"
+lp_norm: "Linf"
+attack_version: "standard"
+num_steps: 5
+random: true
+attack_methods:
+  - "FGSM"
+  - "PGD"
+  - "BIM"
+  - "MIM"
+  - "TIM"
+  - "CW"
+  - "DI_MIM"
+  - "FGSM_L2"
+  - "PGD_L2"
+  - "BIM_L2"
+  - "MM_Attack"
+  - "AA_Attack"
+mim_momentum: 1.0
+epsilon: 0.00392
+num_sub: 10000
+adv_eps: 0.031373
+gpu_ids: "3,4"
+
+# VMI-FGSM settings
+momentum: 1.0
+number: 20
+beta: 1.5
+prob: 0.5
+image_resize: 331
